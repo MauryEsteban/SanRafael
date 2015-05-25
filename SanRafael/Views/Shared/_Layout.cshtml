@@ -11,22 +11,49 @@
 <body>
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
-            <div class="navbar-header">
-                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-                @Html.ActionLink("Application name", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
-            </div>
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
-                </ul>
-                @Html.Partial("_LoginPartial")
-            </div>
+            <nav>
+                <div class="container-fluid">
+                    <div>
+                        <ul class="nav navbar-nav">
+                            <li class="active"><a href="/">Inicio</a></li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Asignaturas
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="~/Asignaturas/Index">Ver Asignaturas</a></li>
+                                    <li><a href="~/Asignaturas/Create">Crear Asignatura</a></li>
+                                    <li><a href="~/Asignaturas/Edit">Editar Asignatura*</a></li>
+                                    <li><a href="~/Asignaturas/Delete">Eliminar Asignatura*</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Alumnos
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="~/Alumnoes/Index">Ver Alumno</a></li>
+                                    <li><a href="~/Alumnoes/Create">Crear Alumno</a></li>
+                                    <li><a href="~/Alumnoes/Edit">Editar Alumno*</a></li>
+                                    <li><a href="~/Alumnoes/Delete">Eliminar Alumno*</a></li>
+                                </ul>
+                            </li>
+                            <li class="dropdown">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#">Docentes
+                                    <span class="caret"></span>
+                                </a>
+                                <ul class="dropdown-menu">
+                                    <li><a href="~/Docentes/Ver">Ver Docente</a></li>
+                                    <li><a href="~/Docentes/Create">Crear Docente</a></li>
+                                    <li><a href="~/Docentes/Edit">Editar Docente*</a></li>
+                                    <li><a href="~/Docentes/Delete">Eliminar Docente*</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </div>
+                    @Html.Partial("_LoginPartial")
+                </div>
+            </nav>
         </div>
     </div>
     <div class="container body-content">
