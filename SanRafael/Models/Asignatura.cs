@@ -2,6 +2,7 @@ namespace SanRafael.Models
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel;
     using System.ComponentModel.DataAnnotations;
     using System.ComponentModel.DataAnnotations.Schema;
     using System.Data.Entity.Spatial;
@@ -19,11 +20,15 @@ namespace SanRafael.Models
         [Key]
         public int id_asignatura { get; set; }
 
-        [Required]
+        [Required(ErrorMessage = "Este campo es obligatorio.")]
         [StringLength(30)]
+        [DisplayName("Nombre")]
+        [RegularExpression("[a-zA-Zαινσϊρ ]{1,30}", ErrorMessage = "Min. 1 y Max. 30 caracteres, solo letras.")]
         public string nombre_asignatura { get; set; }
 
         [StringLength(500)]
+        [DisplayName("Observacion")]
+        [RegularExpression("[a-zA-Zαινσϊρ0-9 ]{1,500}", ErrorMessage = "Min. 1 y Max. 500 caracteres.")]
         public string observacion { get; set; }
 
         public bool estado_eliminado { get; set; }
