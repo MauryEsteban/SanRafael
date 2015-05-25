@@ -1,0 +1,64 @@
+﻿@model SanRafael.Models.Detalle_docente_asignatura_
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Detalle_docente_asignatura_</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Anio_Semestre.id_anio_semestre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anio_Semestre.id_anio_semestre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asignatura.nombre_asignatura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asignatura.nombre_asignatura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Docente.nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Docente.nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_termino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_termino)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

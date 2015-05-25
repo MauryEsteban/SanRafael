@@ -1,0 +1,57 @@
+﻿@model IEnumerable<SanRafael.Models.Detalle_docente_asignatura_>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Anio_Semestre.id_anio_semestre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Asignatura.nombre_asignatura)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Docente.nombres)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_inicio)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.fecha_termino)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Anio_Semestre.id_anio_semestre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Asignatura.nombre_asignatura)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Docente.nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_inicio)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.fecha_termino)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.id_detalle_docente_asignatura }) |
+            @Html.ActionLink("Details", "Details", new { id=item.id_detalle_docente_asignatura }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.id_detalle_docente_asignatura })
+        </td>
+    </tr>
+}
+
+</table>

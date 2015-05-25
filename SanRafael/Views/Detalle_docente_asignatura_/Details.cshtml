@@ -1,0 +1,58 @@
+﻿@model SanRafael.Models.Detalle_docente_asignatura_
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Detalle_docente_asignatura_</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Anio_Semestre.id_anio_semestre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Anio_Semestre.id_anio_semestre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Asignatura.nombre_asignatura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asignatura.nombre_asignatura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Docente.nombres)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Docente.nombres)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_inicio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_inicio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha_termino)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha_termino)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_detalle_docente_asignatura }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

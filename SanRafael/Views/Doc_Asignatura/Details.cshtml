@@ -1,0 +1,66 @@
+﻿@model SanRafael.Models.Doc_Asignatura
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Doc_Asignatura</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Asignatura.nombre_asignatura)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Asignatura.nombre_asignatura)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Tipo_Doc_Asignatura.nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Tipo_Doc_Asignatura.nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.observacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.path)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.path)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.estado_eliminado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.estado_eliminado)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.id_doc_asignatura }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
