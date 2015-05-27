@@ -31,6 +31,7 @@ namespace SanRafael.Models
         [RegularExpression("[a-zA-Zαινσϊρ0-9 ]{1,500}", ErrorMessage = "Min. 1 y Max. 500 caracteres.")]
         public string observacion { get; set; }
 
+        [DisplayName("Deshabilitada")]
         public bool estado_eliminado { get; set; }
 
         public virtual ICollection<Detalle_alumno_asignatura_> Detalle_alumno_asignatura_ { get; set; }

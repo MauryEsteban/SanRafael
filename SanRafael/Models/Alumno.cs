@@ -20,13 +20,13 @@ namespace SanRafael.Models
         [DatabaseGenerated(DatabaseGeneratedOption.None)]
         [DisplayName("Rut")]
         [Required(ErrorMessage = "Este campo es obligatorio.")]
-        [RegularExpression("[0-9]{7,8}[0-9kK]{1}", ErrorMessage = "Min. 8 y Max. 9 caracteres, solo números y letra 'k'.")]
+        [RegularExpression("[0-9]{7,8}[0-9]{1}", ErrorMessage = "Min. 8 y Max. 9 caracteres, solo números. Reemplace 'k' por 0.")]
         public int rut_alumno { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio.")]
         [StringLength(30)]
-        [DisplayName("Nombre")]
-        [RegularExpression("[a-zA-Záéíóúñ]{1,20}", ErrorMessage = "Min. 1 y Max. 20 caracteres, solo letras.")]
+        [DisplayName("Nombres")]
+        [RegularExpression("[a-zA-Záéíóúñ ]{1,20}", ErrorMessage = "Min. 1 y Max. 20 caracteres, solo letras.")]
         public string nombres { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio.")]
@@ -50,6 +50,7 @@ namespace SanRafael.Models
         [RegularExpression("[0-9a-zA-Záéíóúñ,.# ]{1,80}", ErrorMessage = "Min. 1 y Max. 80 caracteres.")]
         public string direccion { get; set; }
 
+        [DisplayName("Deshabilitado")]
         public bool estado_eliminado { get; set; }
 
         public virtual ICollection<Detalle_alumno_asignatura_> Detalle_alumno_asignatura_ { get; set; }

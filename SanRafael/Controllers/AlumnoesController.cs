@@ -46,13 +46,22 @@ namespace SanRafael.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "rut_alumno,nombres,apellidos,telefono,telefono2,direccion,estado_eliminado")] Alumno alumno)
+        public ActionResult Create([Bind(Include = "rut_alumno,nombres,apellidos,telefono,telefono2,direccion")] Alumno alumno)
         {
             if (ModelState.IsValid)
             {
-                db.Alumnoes.Add(alumno);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if(db.Alumnoes.Find(alumno.rut_alumno) == null)
+                {
+                    alumno.estado_eliminado = false;
+                    db.Alumnoes.Add(alumno);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["alumnoExiste"] = "El rut ingresado ya existe";
+                }
+                
             }
 
             return View(alumno);
@@ -78,7 +87,7 @@ namespace SanRafael.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "rut_alumno,nombres,apellidos,telefono,telefono2,direccion,estado_eliminado")] Alumno alumno)
+        public ActionResult Edit([Bind(Include = "rut_alumno,nombres,apellidos,telefono,telefono2,direccion")] Alumno alumno)
         {
             if (ModelState.IsValid)
             {
@@ -109,8 +118,11 @@ namespace SanRafael.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
+            //TENIENDO PROBLEMAS  - REVISAR -
             Alumno alumno = db.Alumnoes.Find(id);
-            db.Alumnoes.Remove(alumno);
+            //System.Diagnostics.Debug.WriteLine(alumno.estado_eliminado);
+            db.Alumnoes.Attach(alumno);
+            alumno.estado_eliminado = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

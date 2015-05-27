@@ -1,14 +1,12 @@
 ﻿@model IEnumerable<SanRafael.Models.Alumno>
 
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Lista";
 }
 
-<h2>Index</h2>
+<h2>Lista</h2>
+<h4>Alumnos</h4>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>
@@ -53,9 +51,15 @@
             @Html.DisplayFor(modelItem => item.estado_eliminado)
         </td>
         <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.rut_alumno }) |
-            @Html.ActionLink("Details", "Details", new { id=item.rut_alumno }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.rut_alumno })
+            @Html.ActionLink("Ver", "Details", new { id = item.rut_alumno }) |
+            @Html.ActionLink("Editar", "Edit", new { id=item.rut_alumno }) |
+            @if(item.estado_eliminado){
+                @Html.ActionLink("Habilitar", "Restore", new { id = item.rut_alumno })
+            }
+            else
+            {
+                @Html.ActionLink("Deshabilitar", "Delete", new { id = item.rut_alumno })
+            }                        
         </td>
     </tr>
 }

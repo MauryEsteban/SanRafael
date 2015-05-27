@@ -46,10 +46,11 @@ namespace SanRafael.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "id_asignatura,nombre_asignatura,observacion,estado_eliminado")] Asignatura asignatura)
+        public ActionResult Create([Bind(Include = "nombre_asignatura,observacion")] Asignatura asignatura)
         {
             if (ModelState.IsValid)
             {
+                asignatura.estado_eliminado = false;
                 db.Asignaturas.Add(asignatura);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -78,7 +79,7 @@ namespace SanRafael.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "id_asignatura,nombre_asignatura,observacion,estado_eliminado")] Asignatura asignatura)
+        public ActionResult Edit([Bind(Include = "id_asignatura,nombre_asignatura,observacion")] Asignatura asignatura)
         {
             if (ModelState.IsValid)
             {
@@ -87,6 +88,33 @@ namespace SanRafael.Controllers
                 return RedirectToAction("Index");
             }
             return View(asignatura);
+        }
+
+        // GET: Asignaturas/Restore/5
+        public ActionResult Restore(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Asignatura asignatura = db.Asignaturas.Find(id);
+            if (asignatura == null)
+            {
+                return HttpNotFound();
+            }
+            return View(asignatura);
+        }
+
+        // POST: Asignaturas/Restore/5
+        [HttpPost, ActionName("Restore")]
+        [ValidateAntiForgeryToken]
+        public ActionResult RestoreConfirmed(int id)
+        {
+            Asignatura asignatura = db.Asignaturas.Find(id);
+            db.Asignaturas.Attach(asignatura);
+            asignatura.estado_eliminado = false;
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Asignaturas/Delete/5
@@ -110,7 +138,8 @@ namespace SanRafael.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Asignatura asignatura = db.Asignaturas.Find(id);
-            db.Asignaturas.Remove(asignatura);
+            db.Asignaturas.Attach(asignatura);
+            asignatura.estado_eliminado = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }
