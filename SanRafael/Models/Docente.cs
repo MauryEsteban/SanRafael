@@ -24,8 +24,8 @@ namespace SanRafael.Models
 
         [Required(ErrorMessage = "Este campo es obligatorio.")]
         [StringLength(30)]
-        [DisplayName("Nombre")]
-        [RegularExpression("[a-zA-Zαινσϊρ]{1,20}", ErrorMessage = "Min. 1 y Max. 20 caracteres, solo letras.")]
+        [DisplayName("Nombres")]
+        [RegularExpression("[a-zA-Zαινσϊρ ]{1,20}", ErrorMessage = "Min. 1 y Max. 20 caracteres, solo letras.")]
         public string nombres { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio.")]
@@ -61,6 +61,7 @@ namespace SanRafael.Models
         [RegularExpression("[a-zA-Zαινσϊρ ]{1,20}", ErrorMessage = "Min. 1 y Max. 20 caracteres, solo letras.")]
         public string contrasena { get; set; }
 
+        [DisplayName("Deshabilitado")]
         public bool estado_eliminado { get; set; }
 
         public virtual ICollection<Detalle_docente_asignatura_> Detalle_docente_asignatura_ { get; set; }

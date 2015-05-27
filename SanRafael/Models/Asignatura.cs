@@ -18,6 +18,7 @@ namespace SanRafael.Models
         }
 
         [Key]
+        [DisplayName("Código")]
         public int id_asignatura { get; set; }
 
         [Required(ErrorMessage = "Este campo es obligatorio.")]

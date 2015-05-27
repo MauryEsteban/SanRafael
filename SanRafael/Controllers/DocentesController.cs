@@ -46,13 +46,22 @@ namespace SanRafael.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "rut_docente,nombres,apellidos,telefono,telefono2,direccion,especialidad,contrasena,estado_eliminado")] Docente docente)
+        public ActionResult Create([Bind(Include = "rut_docente,nombres,apellidos,telefono,telefono2,direccion,especialidad,contrasena")] Docente docente)
         {
             if (ModelState.IsValid)
             {
-                db.Docentes.Add(docente);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+                if(db.Docentes.Find(docente.rut_docente) == null)
+                {
+                    docente.estado_eliminado = false;
+                    db.Docentes.Add(docente);
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    TempData["docenteExiste"] = "El rut ingresado ya existe";
+                }
+                
             }
 
             return View(docente);
@@ -78,7 +87,7 @@ namespace SanRafael.Controllers
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "rut_docente,nombres,apellidos,telefono,telefono2,direccion,especialidad,contrasena,estado_eliminado")] Docente docente)
+        public ActionResult Edit([Bind(Include = "rut_docente,nombres,apellidos,telefono,telefono2,direccion,especialidad,contrasena")] Docente docente)
         {
             if (ModelState.IsValid)
             {
@@ -110,7 +119,8 @@ namespace SanRafael.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Docente docente = db.Docentes.Find(id);
-            db.Docentes.Remove(docente);
+            db.Docentes.Attach(docente);
+            docente.estado_eliminado = true;
             db.SaveChanges();
             return RedirectToAction("Index");
         }

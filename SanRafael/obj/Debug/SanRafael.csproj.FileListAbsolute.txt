@@ -52,3 +52,4 @@ c:\users\benjamin\documents\visual studio 2013\Projects\SanRafael\SanRafael\bin\
 c:\users\benjamin\documents\visual studio 2013\Projects\SanRafael\SanRafael\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
 c:\users\benjamin\documents\visual studio 2013\Projects\SanRafael\SanRafael\obj\Debug\SanRafael.dll
 c:\users\benjamin\documents\visual studio 2013\Projects\SanRafael\SanRafael\obj\Debug\SanRafael.pdb
+C:\Users\benjamin\Documents\Visual Studio 2013\Projects\SanRafael\SanRafael\obj\Debug\SanRafael.csprojResolveAssemblyReference.cache

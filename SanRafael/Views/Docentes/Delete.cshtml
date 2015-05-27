@@ -1,12 +1,11 @@
 ﻿@model SanRafael.Models.Docente
 
 @{
-    ViewBag.Title = "Delete";
+    ViewBag.Title = "Deshabilitar";
 }
 
-<h2>Delete</h2>
+<h2>Deshabilitar</h2>
 
-<h3>Are you sure you want to delete this?</h3>
 <div>
     <h4>Docente</h4>
     <hr />
@@ -81,8 +80,8 @@
         @Html.AntiForgeryToken()
 
         <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
+            <input type="submit" value="Deshabilitar" class="btn btn-default" /> |
+            @Html.ActionLink("Volver", "Index")
         </div>
     }
 </div>
